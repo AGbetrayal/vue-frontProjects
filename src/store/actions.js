@@ -13,7 +13,8 @@ import {
   INCREMENT_FOOD_COUNT,
   DECREMENT_FOOD_COUNT,
   CLEAR_CART,
-  RECEIVE_SEARCH_SHOPS
+  RECEIVE_SEARCH_SHOPS,
+  RECEIVE_ACCESSTOKEN
 } from './mutation-types'
 import {
   reqAddress,
@@ -138,6 +139,19 @@ export default {
     if (result.code === 0) {
       const searchShops = result.data
       commit(RECEIVE_SEARCH_SHOPS, {searchShops})
+    }
+  },
+
+  // 异步获取token信息
+  accessToken({commit}, accessToken) {
+    commit(RECEIVE_ACCESSTOKEN, {accessToken})
+  },
+  // 异步获取刷新的token信息
+  async resToken({commit}) {
+    const result = await reqUserInfo()
+    if (result.code === 0) {
+      const accessToken = result.data
+      commit(RECEIVE_ACCESSTOKEN, {accessToken})
     }
   },
 }

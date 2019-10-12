@@ -14,7 +14,8 @@ import {
   INCREMENT_FOOD_COUNT,
   DECREMENT_FOOD_COUNT,
   CLEAR_CART,
-  RECEIVE_SEARCH_SHOPS
+  RECEIVE_SEARCH_SHOPS,
+  RECEIVE_ACCESSTOKEN
 } from './mutation-types'
 
 export default {
@@ -84,5 +85,9 @@ export default {
 
   [RECEIVE_SEARCH_SHOPS](state, {searchShops}) {
     state.searchShops = searchShops
+  },
+  // 接受token对象
+  [RECEIVE_ACCESSTOKEN](state, {accessToken}) {
+    state.accessToken = accessToken
   },
 }

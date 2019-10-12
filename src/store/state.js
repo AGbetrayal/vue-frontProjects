@@ -13,4 +13,6 @@ export default {
   info: {}, // 商家信息
   cartFoods: [], // 购物车中食物的列表
   searchShops: [], // 搜索得到的商家列表
+  // 以下为出来token的信息
+  accessToken: {}, // token对象
 }

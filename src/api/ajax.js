@@ -3,6 +3,16 @@ axios请求函数模块
 返回值: promise对象(异步返回的数据是: response.data)
  */
 import axios from 'axios'
+const BASE_URL = '/api' //默认请求头(代理请求头)
+var instance = axios.create({
+  baseURL: BASE_URL,
+  timeout: 3000 // 超时时间
+})
+
+// 响应拦截器
+
+
+
 export default function axio (url, data={}, type='GET') {
 
   return new Promise(function (resolve, reject) {
@@ -19,10 +29,10 @@ export default function axio (url, data={}, type='GET') {
         url = url + '?' + dataStr
       }
       // 发送get请求
-      promise = axios.get(url)
+      promise = instance.get(url)
     } else {
       // 发送post请求
-      promise = axios.post(url, data)
+      promise = instance.post(url, data)
     }
     promise.then(function (response) {
       // 成功了调用resolve()
